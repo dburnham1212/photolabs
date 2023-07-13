@@ -1,18 +1,23 @@
 import React from 'react';
 
+import { useState } from 'react';
+
 import TopNavigation from '../components/TopNavigationBar';
 import PhotoList from '../components/PhotoList';
 
-import topics from '../mocks/topics';
-import photos from '../mocks/photos';
+
 
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = () => {
+const HomeRoute = (props) => {
   return(
     <div className="home-route">
-      <TopNavigation topics={topics}/>
-      <PhotoList photos={photos}/> 
+      <TopNavigation topics={props.topics} numFavourites={props.favourites.length}/>
+      <PhotoList 
+        photos={props.photos}
+        favourites={props.favourites}
+        toggleFavourite = {props.toggleFavourite}
+      /> 
     </div>
   )
   

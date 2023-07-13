@@ -4,15 +4,15 @@ import { FavIcon } from './FavIcon';
 import { FavBadge } from './FavBadge';
 import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton() {
-  const [favourite, setFavourite] = useState(false);
-  
-  const handleClick = () => setFavourite(!favourite);
+function PhotoFavButton(props) {
+  const onClick = function() {
+    props.onClick(props.id);
+  }
 
   return (
-    <div onClick={handleClick} className="photo-list__fav-icon">
+    <div onClick={onClick} className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
-          <FavIcon height={30} width={20} fill={favourite ? "#C80000" : "#EEEEEE"}/>
+          <FavIcon height={30} width={20} fill={props.favourite ? "#C80000" : "#EEEEEE"}/>
       </div>
     </div>
   );
