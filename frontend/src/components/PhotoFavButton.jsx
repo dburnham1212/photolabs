@@ -12,7 +12,7 @@ function PhotoFavButton() {
   return (
     <div onClick={handleClick} className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
-          {favourite ? <FavBadge /> : <FavIcon />}
+          <FavIcon height={30} width={20} fill={favourite ? "#C80000" : "#EEEEEE"}/>
       </div>
     </div>
   );
