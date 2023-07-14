@@ -17,6 +17,7 @@ const HomeRoute = (props) => {
         photos={props.photos}
         favourites={props.favourites}
         toggleFavourite = {props.toggleFavourite}
+        clickPhoto = {props.clickPhoto}
       /> 
     </div>
   )
