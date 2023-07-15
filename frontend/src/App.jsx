@@ -26,7 +26,7 @@ const App = () => {
   const [topicID, setTopicID] = useState(-1)
 
   useEffect(() => {
-    if (topicID != -1) {
+    if (topicID !== -1) {
       fetch(`/api/topics/photos/${topicID}`)
         .then(res => res.json())
         .then(data => {
@@ -55,7 +55,6 @@ const App = () => {
         favourites={state.favPhotos}
         toggleFavourite={toggleFavourite}
         clickPhoto={clickPhoto}
-        topicID={topicID}
         setTopicID={setTopicID}
       />
       {state.clickedPhoto && <PhotoDetailsModal
