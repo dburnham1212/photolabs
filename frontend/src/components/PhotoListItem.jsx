@@ -11,14 +11,14 @@ const PhotoListItem = (props) => {
   const favourite = props.favourites.includes(props.id);
   
   const clickPhoto = function(){
-    props.clickPhoto({ id: props.id, user: props.user, fullImage: props.fullImage, location: props.location, similarPhotos: props.similarPhotos });
+    props.clickPhoto({type: "ADD", info: { id: props.id, user: props.user, fullImage: props.fullImage, location: props.location, similarPhotos: props.similarPhotos }});
   }
 
   return (
     <li key={props.id} className="photo-list__item">
       <PhotoFavButton
         favourite={favourite}
-        onClick={props.toggleFavourite}
+        toggleFavourite={props.toggleFavourite}
         id={props.id}
       />
       <img src={props.imageSource} onClick={clickPhoto} className="photo-list__image" />

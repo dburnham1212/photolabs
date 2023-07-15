@@ -6,7 +6,7 @@ import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
   const onClick = function() {
-    props.onClick(props.id);
+    props.toggleFavourite({ type: "toggle", id: props.id});
   }
 
   return (

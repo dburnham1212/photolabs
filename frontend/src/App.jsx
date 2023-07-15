@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import useApplicationData from './hooks/useApplicationData';
+
 import HomeRoute from './routes/HomeRoute';
 import PhotoDetailsModal from './routes/PhotoDetailsModal'
 import topics from './mocks/topics';
@@ -10,38 +12,27 @@ import './App.scss';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  //Setting up favourite photos array
-  const [favPhotos, setFavPhotos] = useState([]);
-
-  const toggleFavourite = (id) => {
-    if (!favPhotos.includes(id)) {
-      return setFavPhotos([...favPhotos, id]);
-    }
-    setFavPhotos(favPhotos.filter(i => i !== id));
-  }
-
-  // Setting up the photo that we have clicked on
-  const [clickedPhoto, setClickedPhoto] = useState(null);
-
-  const clickPhoto = (photo) => {
-    setClickedPhoto(photo);
-  }
+  const {
+    state,
+    clickPhoto,
+    toggleFavourite
+  } = useApplicationData();
 
   return (
     <div className="App">
       <HomeRoute
         photos={photos}
         topics={topics}
-        favourites={favPhotos}
+        favourites={state.favPhotos}
         toggleFavourite={toggleFavourite}
         clickPhoto={clickPhoto}
       />
-      {clickedPhoto && <PhotoDetailsModal 
+      {state.clickedPhoto && <PhotoDetailsModal
         photos={photos}
-        favourites={favPhotos}
-        toggleFavourite = {toggleFavourite}
-        clickedPhoto={clickedPhoto} 
-        clickPhoto={clickPhoto}/>}
+        favourites={state.favPhotos}
+        toggleFavourite={toggleFavourite}
+        clickedPhoto={state.clickedPhoto}
+        clickPhoto={clickPhoto} />}
     </div>
   );
 }

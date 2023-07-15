@@ -9,7 +9,7 @@ export const PhotoDetailsModal = (props) => {
   const favourite = props.favourites.includes(props.clickedPhoto.id);
 
   const clickPhoto = function () {
-    props.clickPhoto(null);
+    props.clickPhoto({type: "REMOVE"});
   }
 
   return (
@@ -30,7 +30,7 @@ export const PhotoDetailsModal = (props) => {
       <div className='photo-detals-modal__image_container'>
         <PhotoFavButton
           favourite={favourite}
-          onClick={props.toggleFavourite}
+          toggleFavourite={props.toggleFavourite}
           id={props.clickedPhoto.id}
         />
         {/* Large version of the photo */}
