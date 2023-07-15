@@ -10,6 +10,7 @@ import './App.scss';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
+  //Setting up favourite photos array
   const [favPhotos, setFavPhotos] = useState([]);
 
   const toggleFavourite = (id) => {
@@ -19,6 +20,7 @@ const App = () => {
     setFavPhotos(favPhotos.filter(i => i !== id));
   }
 
+  // Setting up the photo that we have clicked on
   const [clickedPhoto, setClickedPhoto] = useState(null);
 
   const clickPhoto = (photo) => {
@@ -34,7 +36,12 @@ const App = () => {
         toggleFavourite={toggleFavourite}
         clickPhoto={clickPhoto}
       />
-      {clickedPhoto && <PhotoDetailsModal clickPhoto={clickPhoto}/>}
+      {clickedPhoto && <PhotoDetailsModal 
+        photos={photos}
+        favourites={favPhotos}
+        toggleFavourite = {toggleFavourite}
+        clickedPhoto={clickedPhoto} 
+        clickPhoto={clickPhoto}/>}
     </div>
   );
 }

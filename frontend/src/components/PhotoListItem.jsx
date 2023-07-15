@@ -11,7 +11,7 @@ const PhotoListItem = (props) => {
   const favourite = props.favourites.includes(props.id);
   
   const clickPhoto = function(){
-    props.clickPhoto({ fullImage: props.fullImage, similarPhotos: props.similarPhotos })
+    props.clickPhoto({ id: props.id, user: props.user, fullImage: props.fullImage, location: props.location, similarPhotos: props.similarPhotos });
   }
 
   return (
@@ -23,10 +23,14 @@ const PhotoListItem = (props) => {
       />
       <img src={props.imageSource} onClick={clickPhoto} className="photo-list__image" />
       <div className="photo-list__user-details">
-        <img src={props.profile} className="photo-list__user-profile" />
-        <p className="photo-list__user-info">{props.username}</p>
+        <img src={props.user.profile} className="photo-list__user-profile" />
+        <div className="photo-list__user-card">
+          <p className="photo-list__user-info">{props.user.username}</p>
+          <p className="photo-list__user-location">{props.location.city}, {props.location.country}</p>
+        </div>
+        
       </div>
-      <p className="photo-list__user-location">{props.location.city}, {props.location.country}</p>
+      
     </li>
   )
 }

@@ -41,8 +41,18 @@
   font-weight: 700;
   font-size: 12px;
   margin-left: 8px;
+  margin-bottom: 2px;
 }
 
 .photo-list__user-location {
   color: #838383;
+  font-size: 14px;
+  margin-left: 8px;
+  margin-top: 2px;
+  margin-bottom: 0;
+}
+
+.photo-list__user-card{
+  display: flex;
+  flex-direction: column;
 }

@@ -1,9 +1,14 @@
 import React from 'react';
 
+import PhotoFavButton from '../components/PhotoFavButton';
+import PhotoList from '../components/PhotoList';
+
 import '../styles/PhotoDetailsModal.scss'
 
 export const PhotoDetailsModal = (props) => {
-  const clickPhoto = function() {
+  const favourite = props.favourites.includes(props.clickedPhoto.id);
+
+  const clickPhoto = function () {
     props.clickPhoto(null);
   }
 
@@ -22,6 +27,30 @@ export const PhotoDetailsModal = (props) => {
           </defs>
         </svg>
       </button>
+      <div className='photo-detals-modal__image_container'>
+        <PhotoFavButton
+          favourite={favourite}
+          onClick={props.toggleFavourite}
+          id={props.clickedPhoto.id}
+        />
+        {/* Large version of the photo */}
+        <img src={props.clickedPhoto.fullImage} className='photo-details-modal__image'/>
+      </div>
+      <div className="photo-details-modal__photographer-details">
+        <img src={props.clickedPhoto.user.profile} className="photo-details-modal__photographer-profile" />
+        <div className="photo-details-modal__photographer-card">
+          <p className="photo-details-modal__photographer-info">{props.clickedPhoto.user.username}</p>
+          <p className="photo-details-modal__photographer-location">{props.clickedPhoto.location.city}, {props.clickedPhoto.location.country}</p>
+        </div>
+      </div>
+      
+      <hr width="95%"/>
+      <PhotoList
+        photos={props.photos.filter((photo) => Object.values(props.clickedPhoto.similarPhotos).map(similarPhoto => similarPhoto.id).includes(photo.id))}
+        favourites={props.favourites}
+        toggleFavourite={props.toggleFavourite}
+        clickPhoto={props.clickPhoto}
+      />
     </div>
   )
 }
