@@ -10,7 +10,7 @@ const TopNavigation = (props) => {
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <div className="top-nav-bar__links">
-        <TopicList topics={props.topics} />
+        <TopicList topics={props.topics} topicID={props.topicID} setTopicID={props.setTopicID} />
         <FavBadge isFavPhotoExist={props.numFavourites} />
       </div>
       

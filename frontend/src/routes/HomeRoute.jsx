@@ -12,7 +12,7 @@ import '../styles/HomeRoute.scss';
 const HomeRoute = (props) => {
   return(
     <div className="home-route">
-      <TopNavigation topics={props.topics} numFavourites={props.favourites.length}/>
+      <TopNavigation topics={props.topics} numFavourites={props.favourites.length} topicID={props.topicID} setTopicID={props.setTopicID}/>
       <PhotoList 
         photos={props.photos}
         favourites={props.favourites}
