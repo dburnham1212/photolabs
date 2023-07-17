@@ -22,11 +22,11 @@ Showing the popup modal which displays a larger version of an image that is sele
 
 ## Setup
 
-## Dependencies
+### Dependencies
 
 Install dependencies with `npm install` in each respective `/frontend` and `/backend`.
 
-### [Frontend] Frontend Dependencies
+#### [Frontend] Frontend Dependencies
 
     - axios
     - react 
@@ -36,8 +36,8 @@ Install dependencies with `npm install` in each respective `/frontend` and `/bac
     - @testing-library/jest-dom
     - @testing-library/react
     - @testing-library/user-event
-    
-### [Backend] Backend Dependencies
+
+#### [Backend] Backend Dependencies
 
     - body-parser
     - cors
@@ -48,16 +48,16 @@ Install dependencies with `npm install` in each respective `/frontend` and `/bac
     - socket.io
     - ws
 
-## Getting Started
+### Getting Started
 
-### [Frontend] Running Webpack Development Server
+#### [Frontend] Running Webpack Development Server
 
 ```sh
 cd frontend
 npm start
 ```
 
-### [Backend] Running Backend Servier
+#### [Backend] Running Backend Servier
 
 Read `backend/readme` for further setup details.
 
