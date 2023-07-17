@@ -26,6 +26,6 @@ function PhotoFavButton(props) {
       </div>
     </div>
   );
-}
+};
 
 export default PhotoFavButton;

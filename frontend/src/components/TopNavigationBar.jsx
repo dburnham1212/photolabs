@@ -23,7 +23,7 @@ const TopNavigation = (props) => {
       </div>
       
     </div>
-  )
-}
+  );
+};
 
 export default TopNavigation;

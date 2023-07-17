@@ -8,7 +8,7 @@ import '../styles/PhotoDetailsModal.scss'
 export const PhotoDetailsModal = (props) => {
   // Destructuring props
   const {
-    CONSTANTS, 
+    CONSTANTS,
     photos,
     clickedPhoto,
     clickPhoto,
@@ -22,7 +22,7 @@ export const PhotoDetailsModal = (props) => {
   // Creating a function to use when the user clicks on the X button to clear out the state
   const clickOnPhoto = () => {
     clickPhoto({ type: CONSTANTS.UNSET });
-  }
+  };
 
   return (
     <div className='photo-details-modal'>
@@ -43,6 +43,7 @@ export const PhotoDetailsModal = (props) => {
       {/*Setting up an image container to display the large version of the image */}
       <div className='photo-detals-modal__image_container'>
         <PhotoFavButton
+          CONSTANTS={CONSTANTS}
           favourite={favourite}
           toggleFavourite={toggleFavourite}
           id={clickedPhoto.id}
@@ -69,6 +70,6 @@ export const PhotoDetailsModal = (props) => {
         clickPhoto={clickPhoto}
       />
     </div>
-  )
-}
+  );
+};
 export default PhotoDetailsModal;

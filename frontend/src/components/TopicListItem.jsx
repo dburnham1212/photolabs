@@ -9,12 +9,12 @@ const TopicListItem = (props) => {
     id, 
     updatePhotosByTopic 
   } = props;
-  
+
   return(
     <div key={id} onClick={() => updatePhotosByTopic(id)}className="topic-list__item">
       <span>{label}</span>
     </div>
   );
-}
+};
 
 export default TopicListItem

@@ -9,7 +9,7 @@ const useApplicationData = () => {
     TOGGLE: "TOGGLE",
     SET: "SET",
     UNSET: "UNSET"
-  }
+  };
 
   // Setting up state for topics
   const [topics, setTopics] = useState([]);
@@ -17,13 +17,13 @@ const useApplicationData = () => {
   // Fetch list of topics from api
   useEffect(() => {
     axios.get('/api/topics')
-    .then(res => {
-      setTopics([...res.data]);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
-  }, [])
+      .then(res => {
+        setTopics([...res.data]);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, []);
 
   // Setting up state for photos
   const [photos, setPhotos] = useState([]);
@@ -33,25 +33,25 @@ const useApplicationData = () => {
   //Fetch list of photos from api
   useEffect(() => {
     axios.get('/api/photos')
-    .then(res => {
-      setPhotos([...res.data]);
-      setDisplayedPhotos([...res.data]);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
-  }, [])
+      .then(res => {
+        setPhotos([...res.data]);
+        setDisplayedPhotos([...res.data]);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, []);
 
   // function to update photos based off of a specific topic id
   const updatePhotosByTopic = (topicID) => {
     axios.get(`/api/topics/photos/${topicID}`)
-    .then(res => {
-      setDisplayedPhotos([...res.data]);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
-  } 
+      .then(res => {
+        setDisplayedPhotos([...res.data]);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
 
   //Setting up favourite photos array
   function favPhotoReducer(state, action) {

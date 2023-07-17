@@ -11,7 +11,7 @@ import './App.scss';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   // Recieving state and functions used to manipulate the data
-  const { 
+  const {
     CONSTANTS,
     state,
     clickPhoto,
@@ -42,6 +42,6 @@ const App = () => {
         clickPhoto={clickPhoto} />}
     </div>
   );
-}
+};
 
 export default App

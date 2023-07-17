@@ -27,7 +27,8 @@ const HomeRoute = (props) => {
       {/* Setting up top navigation panel */}
       <TopNavigation 
         topics={topics}
-        numFavourites={photos.filter(photo => favourites.includes(photo.id)).length} 
+        // set numfavourites to the amount of photos from the list that we are currently displaying
+        numFavourites={displayedPhotos.filter(photo => favourites.includes(photo.id)).length} 
         updatePhotosByTopic={updatePhotosByTopic}
       />
       {/* Setting up photo list */}
@@ -40,8 +41,7 @@ const HomeRoute = (props) => {
         clickPhoto = {clickPhoto}
       /> 
     </div>
-  )
-  
-}
+  );
+};
 
 export default HomeRoute;

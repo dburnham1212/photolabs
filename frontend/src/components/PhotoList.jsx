@@ -37,6 +37,6 @@ const PhotoList = (props) => {
       {displayedPhotos}
     </ul>
   );
-}
+};
 
 export default PhotoList

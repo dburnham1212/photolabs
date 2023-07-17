@@ -27,7 +27,7 @@ const PhotoListItem = (props) => {
   // Function to set the current photo to display
   const clickOnPhoto = () => {
     clickPhoto({type: CONSTANTS.SET, info: { id, user, fullImage, location, similarPhotos }});
-  }
+  };
 
   return (
     <li key={props.id} className="photo-list__item">
@@ -51,8 +51,8 @@ const PhotoListItem = (props) => {
       </div>
       
     </li>
-  )
-}
+  );
+};
 
 
 export default PhotoListItem

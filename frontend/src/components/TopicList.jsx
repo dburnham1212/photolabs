@@ -20,6 +20,6 @@ const TopicList = (props) => {
       {topicItems}
     </div>
   );
-}
+};
 
 export default TopicList
