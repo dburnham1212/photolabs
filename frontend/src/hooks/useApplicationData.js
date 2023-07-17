@@ -1,7 +1,9 @@
 import { useState, useEffect, useReducer } from 'react';
 
-import axios from 'axios'
 import { clickedPhotoReducer, favPhotoReducer } from './reducers';
+
+import axios from 'axios'
+
 
 const useApplicationData = () => {
 
@@ -49,7 +51,6 @@ const useApplicationData = () => {
 
   // Setting up an array to store the ids of favourited photos
   const [favPhotos, toggleFavourite] = useReducer(favPhotoReducer, []);
-
   // Setting up a value which will be an object to check if a photo in photoList has been clicked
   const [clickedPhoto, clickPhoto] = useReducer(clickedPhotoReducer, null);
 
