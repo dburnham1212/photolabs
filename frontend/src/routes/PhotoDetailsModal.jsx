@@ -8,6 +8,7 @@ import '../styles/PhotoDetailsModal.scss'
 export const PhotoDetailsModal = (props) => {
   // Destructuring props
   const {
+    CONSTANTS, 
     photos,
     clickedPhoto,
     clickPhoto,
@@ -15,14 +16,17 @@ export const PhotoDetailsModal = (props) => {
     toggleFavourite
   } = props;
 
+  //
   const favourite = favourites.includes(clickedPhoto.id);
 
+  // Creating a function to use when the user clicks on the X button to clear out the state
   const clickOnPhoto = () => {
-    clickPhoto({ type: "REMOVE" });
+    clickPhoto({ type: CONSTANTS.UNSET });
   }
 
   return (
     <div className='photo-details-modal'>
+      {/* Setting up the X button to close the modal*/}
       <button onClick={clickOnPhoto} className='photo-details-modal__close-button'>
         <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clipPath="url(#clip0_428_287)">
@@ -36,15 +40,17 @@ export const PhotoDetailsModal = (props) => {
           </defs>
         </svg>
       </button>
+      {/*Setting up an image container to display the large version of the image */}
       <div className='photo-detals-modal__image_container'>
         <PhotoFavButton
           favourite={favourite}
           toggleFavourite={toggleFavourite}
           id={clickedPhoto.id}
         />
-        {/* Large version of the photo */}
+        {/* Displaying the large version of the photo */}
         <img src={clickedPhoto.fullImage} className='photo-details-modal__image' />
       </div>
+      {/* Displaying the user details */}
       <div className="photo-details-modal__photographer-details">
         <img src={clickedPhoto.user.profile} className="photo-details-modal__photographer-profile" />
         <div className="photo-details-modal__photographer-card">
@@ -52,9 +58,10 @@ export const PhotoDetailsModal = (props) => {
           <p className="photo-details-modal__photographer-location">{clickedPhoto.location.city}, {clickedPhoto.location.country}</p>
         </div>
       </div>
-
       <hr width="95%" />
+      {/* Setting up a photolist within the modal */}
       <PhotoList
+        CONSTANTS={CONSTANTS}
         // filter the similar photos based on the actual photo list so that you are able to click on like photos within the modal
         photos={photos.filter((photo) => Object.values(clickedPhoto.similarPhotos).map(similarPhoto => similarPhoto.id).includes(photo.id))}
         favourites={favourites}

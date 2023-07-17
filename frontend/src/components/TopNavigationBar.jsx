@@ -12,10 +12,11 @@ const TopNavigation = (props) => {
     numFavourites,
     updatePhotosByTopic
   } = props;
-  
+
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
+      {/* Section to display navbar links and favourites badge if something on page is favourited */}
       <div className="top-nav-bar__links">
         <TopicList topics={topics} updatePhotosByTopic={updatePhotosByTopic} />
         <FavBadge isFavPhotoExist={numFavourites} />

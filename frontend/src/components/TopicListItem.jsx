@@ -9,7 +9,7 @@ const TopicListItem = (props) => {
     id, 
     updatePhotosByTopic 
   } = props;
-  // Setting up the component
+  
   return(
     <div key={id} onClick={() => updatePhotosByTopic(id)}className="topic-list__item">
       <span>{label}</span>

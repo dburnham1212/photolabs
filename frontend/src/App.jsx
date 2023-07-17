@@ -10,8 +10,9 @@ import './App.scss';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  // Recieving state and functions to manipulate the data
-  const {
+  // Recieving state and functions used to manipulate the data
+  const { 
+    CONSTANTS,
     state,
     clickPhoto,
     toggleFavourite,
@@ -22,7 +23,9 @@ const App = () => {
     <div className="App">
       {/* Setting up the home route to display the webpage */}
       <HomeRoute
+        CONSTANTS={CONSTANTS}
         photos={state.photos}
+        displayedPhotos={state.displayedPhotos}
         topics={state.topics}
         favourites={state.favPhotos}
         toggleFavourite={toggleFavourite}
@@ -31,6 +34,7 @@ const App = () => {
       />
       {/* Setting up the photo details modal to display when a photo is clicked */}
       {state.clickedPhoto && <PhotoDetailsModal
+        CONSTANTS={CONSTANTS}
         photos={state.photos}
         favourites={state.favPhotos}
         toggleFavourite={toggleFavourite}

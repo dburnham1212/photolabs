@@ -1,51 +1,62 @@
 import { useState, useEffect, useReducer } from 'react';
 
+import axios from 'axios'
 
 const useApplicationData = () => {
+  // Defining constant values
+  const CONSTANTS = {
+    // Actions to be used by reducers
+    TOGGLE: "TOGGLE",
+    SET: "SET",
+    UNSET: "UNSET"
+  }
+
   // Setting up state for topics
   const [topics, setTopics] = useState([]);
 
+  // Fetch list of topics from api
   useEffect(() => {
-    fetch('/api/topics')
-      .then(res => res.json())
-      .then(data => {
-        setTopics([...data])
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    axios.get('/api/topics')
+    .then(res => {
+      setTopics([...res.data]);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   }, [])
 
   // Setting up state for photos
   const [photos, setPhotos] = useState([]);
+  // Set up the list of photos that we currently want to display
+  const [displayedPhotos, setDisplayedPhotos] = useState([]);
 
+  //Fetch list of photos from api
   useEffect(() => {
-      fetch(`/api/photos/`)
-        .then(res => res.json())
-        .then(data => {
-          setPhotos([...data])
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
+    axios.get('/api/photos')
+    .then(res => {
+      setPhotos([...res.data]);
+      setDisplayedPhotos([...res.data]);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   }, [])
 
   // function to update photos based off of a specific topic id
   const updatePhotosByTopic = (topicID) => {
-    fetch(`/api/topics/photos/${topicID}`)
-        .then(res => res.json())
-        .then(data => {
-          setPhotos([...data])
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
+    axios.get(`/api/topics/photos/${topicID}`)
+    .then(res => {
+      setDisplayedPhotos([...res.data]);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   } 
 
   //Setting up favourite photos array
   function favPhotoReducer(state, action) {
     switch (action.type) {
-      case "TOGGLE":
+      case CONSTANTS.TOGGLE:
         if (!state.includes(action.id)) {
           return [...state, action.id];
         }
@@ -55,15 +66,16 @@ const useApplicationData = () => {
     }
   }
 
+  // Setting up an array to store the ids of favourited photos
   const [favPhotos, toggleFavourite] = useReducer(favPhotoReducer, []);
 
   // Setting up the photo that we have clicked on
   function clickedPhotoReducer(state, action) {
     switch (action.type) {
-      case "ADD":
+      case CONSTANTS.SET:
         state = action.info
         return state;
-      case "REMOVE":
+      case CONSTANTS.UNSET:
         state = null;
         return state;
       default:
@@ -71,11 +83,13 @@ const useApplicationData = () => {
     }
   }
 
+  // Setting up a value which will be an object to check if a photo in photoList has been clicked
   const [clickedPhoto, clickPhoto] = useReducer(clickedPhotoReducer, null);
 
   // Setting up state and returning necessary values
   return {
-    state: { favPhotos, clickedPhoto, topics, photos },
+    CONSTANTS,
+    state: { favPhotos, clickedPhoto, topics, photos, displayedPhotos },
     toggleFavourite,
     clickPhoto,
     updatePhotosByTopic

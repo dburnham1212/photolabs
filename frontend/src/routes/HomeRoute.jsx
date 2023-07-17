@@ -12,8 +12,10 @@ import '../styles/HomeRoute.scss';
 const HomeRoute = (props) => {
   // Destructuring props
   const{
+    CONSTANTS,
     topics,
     photos,
+    displayedPhotos,
     favourites,
     toggleFavourite,
     clickPhoto,
@@ -22,13 +24,17 @@ const HomeRoute = (props) => {
 
   return(
     <div className="home-route">
+      {/* Setting up top navigation panel */}
       <TopNavigation 
-        topics={topics} 
+        topics={topics}
         numFavourites={photos.filter(photo => favourites.includes(photo.id)).length} 
         updatePhotosByTopic={updatePhotosByTopic}
       />
+      {/* Setting up photo list */}
       <PhotoList 
-        photos={photos}
+        CONSTANTS={CONSTANTS}
+        // Filter through the current photos to display in order to maintain initial photo list
+        photos={photos.filter((photo => displayedPhotos.map(displayedPhoto => displayedPhoto.id).includes(photo.id)))}
         favourites={favourites}
         toggleFavourite = {toggleFavourite}
         clickPhoto = {clickPhoto}

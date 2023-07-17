@@ -12,6 +12,7 @@ const TopicList = (props) => {
     updatePhotosByTopic
   } = props;
 
+  //Set up our list of TopicListItems
   const topicItems = topics.map((topic) => <TopicListItem key={topic.id} id={topic.id} label={topic.title} updatePhotosByTopic={updatePhotosByTopic}/> )
 
   return(

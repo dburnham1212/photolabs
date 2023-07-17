@@ -7,15 +7,18 @@ import '../styles/PhotoFavButton.scss';
 function PhotoFavButton(props) {
   // Destructuring props
   const {
+    CONSTANTS,
     id,
     favourite,
     toggleFavourite
   } = props;
 
+  // Used to toggle the favourite icon for an image
   const onClick = () => {
-    toggleFavourite({ type: "TOGGLE", id: id});
+    toggleFavourite({ type: CONSTANTS.TOGGLE, id});
   }
 
+  // Setting up our favourite icon
   return (
     <div onClick={onClick} className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
