@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import useApplicationData from './hooks/useApplicationData';
 
@@ -12,7 +12,6 @@ import './App.scss';
 const App = () => {
   // Recieving state and functions used to manipulate the data
   const {
-    CONSTANTS,
     state,
     clickPhoto,
     toggleFavourite,
@@ -23,7 +22,6 @@ const App = () => {
     <div className="App">
       {/* Setting up the home route to display the webpage */}
       <HomeRoute
-        CONSTANTS={CONSTANTS}
         photos={state.photos}
         displayedPhotos={state.displayedPhotos}
         topics={state.topics}
@@ -34,7 +32,6 @@ const App = () => {
       />
       {/* Setting up the photo details modal to display when a photo is clicked */}
       {state.clickedPhoto && <PhotoDetailsModal
-        CONSTANTS={CONSTANTS}
         photos={state.photos}
         favourites={state.favPhotos}
         toggleFavourite={toggleFavourite}

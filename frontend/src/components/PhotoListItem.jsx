@@ -1,6 +1,8 @@
 
 import React from 'react';
 
+import { CONSTANTS } from '../hooks/reducers';
+
 import '../styles/PhotoListItem.scss';
 import PhotoFavButton from './PhotoFavButton';
 
@@ -9,7 +11,6 @@ import PhotoFavButton from './PhotoFavButton';
 const PhotoListItem = (props) => {
   // Destructuring props
   const {
-    CONSTANTS,
     id,
     user,
     imageSource,
@@ -33,7 +34,6 @@ const PhotoListItem = (props) => {
     <li key={props.id} className="photo-list__item">
       {/* Setting up the button to toggle a favourite */}
       <PhotoFavButton
-        CONSTANTS={CONSTANTS}
         favourite={favourite}
         toggleFavourite={toggleFavourite}
         id={id}

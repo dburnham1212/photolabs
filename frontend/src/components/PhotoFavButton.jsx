@@ -1,13 +1,14 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 
 import { FavIcon } from './FavIcon';
-import { FavBadge } from './FavBadge';
+
+import { CONSTANTS } from '../hooks/reducers';
+
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
   // Destructuring props
   const {
-    CONSTANTS,
     id,
     favourite,
     toggleFavourite

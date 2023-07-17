@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { CONSTANTS } from '../hooks/reducers';
+
 import PhotoFavButton from '../components/PhotoFavButton';
 import PhotoList from '../components/PhotoList';
 
@@ -8,7 +10,6 @@ import '../styles/PhotoDetailsModal.scss'
 export const PhotoDetailsModal = (props) => {
   // Destructuring props
   const {
-    CONSTANTS,
     photos,
     clickedPhoto,
     clickPhoto,
@@ -43,7 +44,6 @@ export const PhotoDetailsModal = (props) => {
       {/*Setting up an image container to display the large version of the image */}
       <div className='photo-detals-modal__image_container'>
         <PhotoFavButton
-          CONSTANTS={CONSTANTS}
           favourite={favourite}
           toggleFavourite={toggleFavourite}
           id={clickedPhoto.id}
@@ -62,7 +62,6 @@ export const PhotoDetailsModal = (props) => {
       <hr width="95%" />
       {/* Setting up a photolist within the modal */}
       <PhotoList
-        CONSTANTS={CONSTANTS}
         // filter the similar photos based on the actual photo list so that you are able to click on like photos within the modal
         photos={photos.filter((photo) => Object.values(clickedPhoto.similarPhotos).map(similarPhoto => similarPhoto.id).includes(photo.id))}
         favourites={favourites}

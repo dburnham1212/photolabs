@@ -12,7 +12,6 @@ import '../styles/HomeRoute.scss';
 const HomeRoute = (props) => {
   // Destructuring props
   const{
-    CONSTANTS,
     topics,
     photos,
     displayedPhotos,
@@ -33,7 +32,6 @@ const HomeRoute = (props) => {
       />
       {/* Setting up photo list */}
       <PhotoList 
-        CONSTANTS={CONSTANTS}
         // Filter through the current photos to display in order to maintain initial photo list
         photos={photos.filter((photo => displayedPhotos.map(displayedPhoto => displayedPhoto.id).includes(photo.id)))}
         favourites={favourites}
