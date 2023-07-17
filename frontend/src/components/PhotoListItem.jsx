@@ -7,26 +7,40 @@ import PhotoFavButton from './PhotoFavButton';
 
 
 const PhotoListItem = (props) => {
-  /* Insert React */
-  const favourite = props.favourites.includes(props.id);
+  // Destructuring props
+  const {
+    id,
+    user,
+    imageSource,
+    fullImage,
+    location,
+    similarPhotos,
+    favourites,
+    toggleFavourite,
+    clickPhoto
+  } = props;
+
+  // check if photo list item is a favourite
+  const favourite = favourites.includes(id);
   
-  const clickPhoto = function(){
-    props.clickPhoto({type: "ADD", info: { id: props.id, user: props.user, fullImage: props.fullImage, location: props.location, similarPhotos: props.similarPhotos }});
+  // set the current photo to display
+  const clickOnPhoto = function(){
+    clickPhoto({type: "ADD", info: { id, user, fullImage, location, similarPhotos }});
   }
 
   return (
     <li key={props.id} className="photo-list__item">
       <PhotoFavButton
         favourite={favourite}
-        toggleFavourite={props.toggleFavourite}
-        id={props.id}
+        toggleFavourite={toggleFavourite}
+        id={id}
       />
-      <img src={props.imageSource} onClick={clickPhoto} className="photo-list__image" />
+      <img src={imageSource} onClick={clickOnPhoto} className="photo-list__image" />
       <div className="photo-list__user-details">
-        <img src={props.user.profile} className="photo-list__user-profile" />
+        <img src={user.profile} className="photo-list__user-profile" />
         <div className="photo-list__user-card">
-          <p className="photo-list__user-info">{props.user.username}</p>
-          <p className="photo-list__user-location">{props.location.city}, {props.location.country}</p>
+          <p className="photo-list__user-info">{user.username}</p>
+          <p className="photo-list__user-location">{location.city}, {location.country}</p>
         </div>
         
       </div>

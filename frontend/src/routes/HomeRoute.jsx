@@ -10,14 +10,28 @@ import PhotoList from '../components/PhotoList';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
+  // Destructuring props
+  const{
+    topics,
+    photos,
+    favourites,
+    toggleFavourite,
+    clickPhoto,
+    updatePhotosByTopic
+  } = props;
+
   return(
     <div className="home-route">
-      <TopNavigation topics={props.topics} numFavourites={props.favourites.length} setTopicID={props.setTopicID}/>
+      <TopNavigation 
+        topics={topics} 
+        numFavourites={photos.filter(photo => favourites.includes(photo.id)).length} 
+        updatePhotosByTopic={updatePhotosByTopic}
+      />
       <PhotoList 
-        photos={props.photos}
-        favourites={props.favourites}
-        toggleFavourite = {props.toggleFavourite}
-        clickPhoto = {props.clickPhoto}
+        photos={photos}
+        favourites={favourites}
+        toggleFavourite = {toggleFavourite}
+        clickPhoto = {clickPhoto}
       /> 
     </div>
   )

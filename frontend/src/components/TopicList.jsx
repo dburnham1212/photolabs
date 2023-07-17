@@ -6,7 +6,13 @@ import '../styles/TopicList.scss';
 
 
 const TopicList = (props) => {
-  const topicItems = props.topics.map((topic) => <TopicListItem key={topic.id} id={topic.id} label={topic.title} setTopicID={props.setTopicID}/> )
+  // Destructuring props
+  const {
+    topics,
+    updatePhotosByTopic
+  } = props;
+
+  const topicItems = topics.map((topic) => <TopicListItem key={topic.id} id={topic.id} label={topic.title} updatePhotosByTopic={updatePhotosByTopic}/> )
 
   return(
     <div className="top-nav-bar__topic-list">

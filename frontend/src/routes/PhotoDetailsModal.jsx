@@ -6,15 +6,24 @@ import PhotoList from '../components/PhotoList';
 import '../styles/PhotoDetailsModal.scss'
 
 export const PhotoDetailsModal = (props) => {
-  const favourite = props.favourites.includes(props.clickedPhoto.id);
+  // Destructuring props
+  const {
+    photos,
+    clickedPhoto,
+    clickPhoto,
+    favourites,
+    toggleFavourite
+  } = props;
 
-  const clickPhoto = function () {
-    props.clickPhoto({type: "REMOVE"});
+  const favourite = favourites.includes(clickedPhoto.id);
+
+  const clickOnPhoto = function () {
+    clickPhoto({ type: "REMOVE" });
   }
 
   return (
     <div className='photo-details-modal'>
-      <button onClick={clickPhoto} className='photo-details-modal__close-button'>
+      <button onClick={clickOnPhoto} className='photo-details-modal__close-button'>
         <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clipPath="url(#clip0_428_287)">
             <path d="M14.0625 3.9375L3.9375 14.0625" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
@@ -30,26 +39,27 @@ export const PhotoDetailsModal = (props) => {
       <div className='photo-detals-modal__image_container'>
         <PhotoFavButton
           favourite={favourite}
-          toggleFavourite={props.toggleFavourite}
-          id={props.clickedPhoto.id}
+          toggleFavourite={toggleFavourite}
+          id={clickedPhoto.id}
         />
         {/* Large version of the photo */}
-        <img src={props.clickedPhoto.fullImage} className='photo-details-modal__image'/>
+        <img src={clickedPhoto.fullImage} className='photo-details-modal__image' />
       </div>
       <div className="photo-details-modal__photographer-details">
-        <img src={props.clickedPhoto.user.profile} className="photo-details-modal__photographer-profile" />
+        <img src={clickedPhoto.user.profile} className="photo-details-modal__photographer-profile" />
         <div className="photo-details-modal__photographer-card">
-          <p className="photo-details-modal__photographer-info">{props.clickedPhoto.user.username}</p>
-          <p className="photo-details-modal__photographer-location">{props.clickedPhoto.location.city}, {props.clickedPhoto.location.country}</p>
+          <p className="photo-details-modal__photographer-info">{clickedPhoto.user.username}</p>
+          <p className="photo-details-modal__photographer-location">{clickedPhoto.location.city}, {clickedPhoto.location.country}</p>
         </div>
       </div>
-      
-      <hr width="95%"/>
+
+      <hr width="95%" />
       <PhotoList
-        photos={props.photos.filter((photo) => Object.values(props.clickedPhoto.similarPhotos).map(similarPhoto => similarPhoto.id).includes(photo.id))}
-        favourites={props.favourites}
-        toggleFavourite={props.toggleFavourite}
-        clickPhoto={props.clickPhoto}
+        // filter the similar photos based on the actual photo list so that you are able to click on like photos within the modal
+        photos={photos.filter((photo) => Object.values(clickedPhoto.similarPhotos).map(similarPhoto => similarPhoto.id).includes(photo.id))}
+        favourites={favourites}
+        toggleFavourite={toggleFavourite}
+        clickPhoto={clickPhoto}
       />
     </div>
   )

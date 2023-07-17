@@ -6,12 +6,19 @@ import '../styles/TopNavigationBar.scss'
 
 
 const TopNavigation = (props) => {
+  // Destructuring props
+  const {
+    topics,
+    numFavourites,
+    updatePhotosByTopic
+  } = props;
+  
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <div className="top-nav-bar__links">
-        <TopicList topics={props.topics} setTopicID={props.setTopicID} />
-        <FavBadge isFavPhotoExist={props.numFavourites} />
+        <TopicList topics={topics} updatePhotosByTopic={updatePhotosByTopic} />
+        <FavBadge isFavPhotoExist={numFavourites} />
       </div>
       
     </div>

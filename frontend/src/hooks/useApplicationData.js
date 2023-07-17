@@ -1,7 +1,47 @@
-import { useReducer } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 
 
 const useApplicationData = () => {
+  // Setting up state for topics
+  const [topics, setTopics] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/topics')
+      .then(res => res.json())
+      .then(data => {
+        setTopics([...data])
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, [])
+
+  // Setting up state for photos
+  const [photos, setPhotos] = useState([]);
+
+  useEffect(() => {
+      fetch(`/api/photos/`)
+        .then(res => res.json())
+        .then(data => {
+          setPhotos([...data])
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+  }, [])
+
+  // function to update photos based off of a specific topic id
+  const updatePhotosByTopic = (topicID) => {
+    fetch(`/api/topics/photos/${topicID}`)
+        .then(res => res.json())
+        .then(data => {
+          setPhotos([...data])
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+  } 
+
   //Setting up favourite photos array
   function favPhotoReducer(state, action) {
     switch (action.type) {
@@ -15,19 +55,7 @@ const useApplicationData = () => {
     }
   }
 
-
   const [favPhotos, toggleFavourite] = useReducer(favPhotoReducer, []);
-
-  //const [favPhotos, setFavPhotos] = useState([]);
-
-
-
-  // const toggleFavourite = (id) => {
-  //   if (!favPhotos.includes(id)) {
-  //     return setFavPhotos([...favPhotos, id]);
-  //   }
-  //   setFavPhotos(favPhotos.filter(i => i !== id));
-  // }
 
   // Setting up the photo that we have clicked on
   function clickedPhotoReducer(state, action) {
@@ -45,17 +73,12 @@ const useApplicationData = () => {
 
   const [clickedPhoto, clickPhoto] = useReducer(clickedPhotoReducer, null);
 
-  // const [clickedPhoto, setClickedPhoto] = useState(null);
-
-  // const clickPhoto = (photo) => {
-  //   setClickedPhoto(photo);
-  // }
-
   // Setting up state and returning necessary values
   return {
-    state: { favPhotos: favPhotos, clickedPhoto: clickedPhoto },
+    state: { favPhotos, clickedPhoto, topics, photos },
     toggleFavourite,
-    clickPhoto
+    clickPhoto,
+    updatePhotosByTopic
   }
 }
 

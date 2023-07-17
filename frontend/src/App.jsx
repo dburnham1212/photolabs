@@ -10,55 +10,28 @@ import './App.scss';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-
-
-  const [topics, setTopics] = useState([]);
-
-  useEffect(() => {
-    fetch('/api/topics')
-      .then(res => res.json())
-      .then(data => {
-        setTopics([...data])
-      })
-  }, [topics])
-
-  const [photos, setPhotos] = useState([]);
-  const [topicID, setTopicID] = useState(-1)
-
-  useEffect(() => {
-    if (topicID !== -1) {
-      fetch(`/api/topics/photos/${topicID}`)
-        .then(res => res.json())
-        .then(data => {
-          setPhotos([...data])
-        })
-    } else {
-      fetch(`/api/photos/`)
-        .then(res => res.json())
-        .then(data => {
-          setPhotos([...data])
-        })
-    }
-  }, [photos])
-
+  // Recieving state and functions to manipulate the data
   const {
     state,
     clickPhoto,
-    toggleFavourite
+    toggleFavourite,
+    updatePhotosByTopic
   } = useApplicationData();
 
   return (
     <div className="App">
+      {/* Setting up the home route to display the webpage */}
       <HomeRoute
-        photos={photos}
-        topics={topics}
+        photos={state.photos}
+        topics={state.topics}
         favourites={state.favPhotos}
         toggleFavourite={toggleFavourite}
         clickPhoto={clickPhoto}
-        setTopicID={setTopicID}
+        updatePhotosByTopic={updatePhotosByTopic}
       />
+      {/* Setting up the photo details modal to display when a photo is clicked */}
       {state.clickedPhoto && <PhotoDetailsModal
-        photos={photos}
+        photos={state.photos}
         favourites={state.favPhotos}
         toggleFavourite={toggleFavourite}
         clickedPhoto={state.clickedPhoto}
