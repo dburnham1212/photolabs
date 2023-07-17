@@ -16,7 +16,7 @@ function PhotoFavButton(props) {
   // Used to toggle the favourite icon for an image
   const onClick = () => {
     toggleFavourite({ type: CONSTANTS.TOGGLE, id});
-  }
+  };
 
   // Setting up our favourite icon
   return (

@@ -16,7 +16,7 @@ Displays all of the images located in the people section of the app, users can c
 
 ### PhotoLabs - Popup Modal
 
-Showing the popup modal which displays a larger version of an image that is selected by user as well as similar photos.
+Showing the popup modal which displays a larger version of an image that is selected by user. This modal also shows similar photos.
 
 !["Screenshot of popup modal!"](https://github.com/dburnham1212/photolabs/blob/main/screenshots/Photolabs_modal_view.png)
 

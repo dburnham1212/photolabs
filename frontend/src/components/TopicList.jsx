@@ -13,9 +13,15 @@ const TopicList = (props) => {
   } = props;
 
   //Set up our list of TopicListItems
-  const topicItems = topics.map((topic) => <TopicListItem key={topic.id} id={topic.id} label={topic.title} updatePhotosByTopic={updatePhotosByTopic}/> )
+  const topicItems = topics.map((topic) =>
+    <TopicListItem
+      key={topic.id}
+      id={topic.id}
+      label={topic.title}
+      updatePhotosByTopic={updatePhotosByTopic}
+    />);
 
-  return(
+  return (
     <div className="top-nav-bar__topic-list">
       {topicItems}
     </div>

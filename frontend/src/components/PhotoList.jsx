@@ -29,7 +29,6 @@ const PhotoList = (props) => {
     toggleFavourite={toggleFavourite}
     favourites={favourites}
     clickPhoto={clickPhoto}
-    
   />);
 
   return (

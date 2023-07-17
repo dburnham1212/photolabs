@@ -47,9 +47,7 @@ const PhotoListItem = (props) => {
           <p className="photo-list__user-info">{user.username}</p>
           <p className="photo-list__user-location">{location.city}, {location.country}</p>
         </div>
-        
       </div>
-      
     </li>
   );
 };

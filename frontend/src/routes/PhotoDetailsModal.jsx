@@ -16,7 +16,7 @@ export const PhotoDetailsModal = (props) => {
     toggleFavourite
   } = props;
 
-  //
+  // Checking if the clicked photo is a favourite to update PhotoFavButton
   const favourite = favourites.includes(clickedPhoto.id);
 
   // Creating a function to use when the user clicks on the X button to clear out the state
