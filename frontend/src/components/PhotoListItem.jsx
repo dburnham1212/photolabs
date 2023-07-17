@@ -24,7 +24,7 @@ const PhotoListItem = (props) => {
   const favourite = favourites.includes(id);
   
   // set the current photo to display
-  const clickOnPhoto = function(){
+  const clickOnPhoto = () => {
     clickPhoto({type: "ADD", info: { id, user, fullImage, location, similarPhotos }});
   }
 

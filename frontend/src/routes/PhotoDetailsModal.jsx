@@ -17,7 +17,7 @@ export const PhotoDetailsModal = (props) => {
 
   const favourite = favourites.includes(clickedPhoto.id);
 
-  const clickOnPhoto = function () {
+  const clickOnPhoto = () => {
     clickPhoto({ type: "REMOVE" });
   }
 
