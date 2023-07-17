@@ -2,6 +2,24 @@
 
 PhotoLabs is a React-based single-page application (SPA) that allows users to view photos in different contexts.
 
+### PhotoLabs - Home Page 
+
+Displays all of the images that the app uses. 
+
+!["Screenshot of home page (displaying all photos for Photolabs!)"](https://github.com/dburnham1212/photolabs/blob/main/screenshots/Photolabs_home_page.png)
+
+### PhotoLabs - People Section
+
+Displays all of the images located in the people section of the app, users can click on different sections to view different photos by category!
+
+!["Screenshot of people section (displaying certain images by section!)"](https://github.com/dburnham1212/photolabs/blob/main/screenshots/Photolabs_people_section.png)
+
+### PhotoLabs - Popup Modal
+
+Showing the popup modal which displays a larger version of an image that is selected by user as well as similar photos.
+
+!["Screenshot of popup modal!"](https://github.com/dburnham1212/photolabs/blob/main/screenshots/Photolabs_modal_view.png)
+
 ## Setup
 
 Install dependencies with `npm install` in each respective `/frontend` and `/backend`.
