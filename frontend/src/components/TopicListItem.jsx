@@ -7,11 +7,17 @@ const TopicListItem = (props) => {
   const { 
     label, 
     id, 
-    updatePhotosByTopic 
+    updatePhotosByTopic,
+    setFavMode
   } = props;
 
+  const updatePhotosAndFavMode = () => {
+    setFavMode(false)
+    updatePhotosByTopic(id);
+  }
+
   return(
-    <div key={id} onClick={() => updatePhotosByTopic(id)}className="topic-list__item">
+    <div key={id} onClick={updatePhotosAndFavMode}className="topic-list__item">
       <span>{label}</span>
     </div>
   );

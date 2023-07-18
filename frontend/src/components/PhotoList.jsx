@@ -11,7 +11,9 @@ const PhotoList = (props) => {
     photos,
     favourites,
     toggleFavourite,
-    clickPhoto
+    clickPhoto,
+    inFavMode,
+    viewLikedPhotos
   } = props;
 
   // Setting up an array of photo list items to display within photoList
@@ -27,6 +29,8 @@ const PhotoList = (props) => {
     toggleFavourite={toggleFavourite}
     favourites={favourites}
     clickPhoto={clickPhoto}
+    inFavMode={inFavMode}
+    viewLikedPhotos={viewLikedPhotos}
   />);
 
   return (

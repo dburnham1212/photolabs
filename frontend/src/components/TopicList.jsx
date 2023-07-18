@@ -9,7 +9,8 @@ const TopicList = (props) => {
   // Destructuring props
   const {
     topics,
-    updatePhotosByTopic
+    updatePhotosByTopic,
+    setFavMode
   } = props;
 
   //Set up our list of TopicListItems
@@ -19,6 +20,7 @@ const TopicList = (props) => {
       id={topic.id}
       label={topic.title}
       updatePhotosByTopic={updatePhotosByTopic}
+      setFavMode={setFavMode}
     />);
 
   return (

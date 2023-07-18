@@ -48,18 +48,37 @@ const useApplicationData = () => {
         console.error('Error:', error);
       });
   }
+  
 
   // Setting up an array to store the ids of favourited photos
   const [favPhotos, toggleFavourite] = useReducer(favPhotoReducer, []);
   // Setting up a value which will be an object to check if a photo in photoList has been clicked
-  const [clickedPhoto, clickPhoto] = useReducer(clickedPhotoReducer, null);
+  const [clickedPhoto, clickPhoto] = useReducer(clickedPhotoReducer, null); 
+
+  // State to check if we are viewing favourites or not
+  const [inFavMode, setFavMode] = useState(false);
+  
+  // Setup the liked photos and set the favourite mode 
+  const viewLikedPhotos = () => {
+    setFavMode(true);
+    setDisplayedPhotos(photos.filter((photo) => favPhotos.includes(photo.id))); 
+  }
+
+  // If the favPhotos array has changed in size, update the favourite photos
+  useEffect(() => {
+    if(inFavMode) {
+      viewLikedPhotos();
+    }
+  }, [favPhotos.length])
 
   // Setting up state and returning necessary values
   return {
     state: { favPhotos, clickedPhoto, topics, photos, displayedPhotos },
     toggleFavourite,
     clickPhoto,
-    updatePhotosByTopic
+    updatePhotosByTopic,
+    viewLikedPhotos,
+    setFavMode
   }
 }
 

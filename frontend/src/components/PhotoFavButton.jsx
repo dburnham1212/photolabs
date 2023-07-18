@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { FavIcon } from './FavIcon';
 
@@ -11,19 +11,19 @@ function PhotoFavButton(props) {
   const {
     id,
     favourite,
-    toggleFavourite
+    toggleFavourite,
   } = props;
 
   // Used to toggle the favourite icon for an image
   const onClick = () => {
-    toggleFavourite({ type: CONSTANTS.TOGGLE, id});
+    toggleFavourite({ type: CONSTANTS.TOGGLE, id });
   };
 
   // Setting up our favourite icon
   return (
     <div onClick={onClick} className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
-          <FavIcon height={30} width={20} fill={favourite ? "#C80000" : "#EEEEEE"}/>
+        <FavIcon height={30} width={20} fill={favourite ? "#C80000" : "#EEEEEE"} />
       </div>
     </div>
   );

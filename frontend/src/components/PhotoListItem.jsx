@@ -19,7 +19,9 @@ const PhotoListItem = (props) => {
     similarPhotos,
     favourites,
     toggleFavourite,
-    clickPhoto
+    clickPhoto,
+    inFavMode,
+    viewLikedPhotos
   } = props;
 
   // check if photo list item is a favourite
@@ -37,6 +39,8 @@ const PhotoListItem = (props) => {
         favourite={favourite}
         toggleFavourite={toggleFavourite}
         id={id}
+        inFavMode={inFavMode}
+        viewLikedPhotos={viewLikedPhotos}
       />
       {/* Displaying the image */}
       <img src={imageSource} onClick={clickOnPhoto} className="photo-list__image" />

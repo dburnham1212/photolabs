@@ -1,3 +1,5 @@
+import {useState } from 'react';
+
 // Defining constant values
 export const CONSTANTS = {
   // Actions to be used by reducers
@@ -5,6 +7,7 @@ export const CONSTANTS = {
   SET: "SET",
   UNSET: "UNSET"
 };
+
 
 // Setting up the photo that we have clicked on
 export function clickedPhotoReducer(state, action) {

@@ -11,33 +11,37 @@ import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
   // Destructuring props
-  const{
+  const {
     topics,
     photos,
     displayedPhotos,
     favourites,
     toggleFavourite,
     clickPhoto,
-    updatePhotosByTopic
+    updatePhotosByTopic,
+    viewLikedPhotos,
+    setFavMode,
   } = props;
 
-  return(
+  return (
     <div className="home-route">
       {/* Setting up top navigation panel */}
-      <TopNavigation 
+      <TopNavigation
         topics={topics}
         // set numfavourites to the amount of photos from the list that we are currently displaying
-        numFavourites={displayedPhotos.filter(photo => favourites.includes(photo.id)).length} 
+        numFavourites={displayedPhotos.filter(photo => favourites.includes(photo.id)).length}
         updatePhotosByTopic={updatePhotosByTopic}
+        viewLikedPhotos={viewLikedPhotos}
+        setFavMode={setFavMode}
       />
       {/* Setting up photo list */}
-      <PhotoList 
+      <PhotoList
         // Filter through the current photos to display in order to maintain initial photo list
         photos={photos.filter((photo => displayedPhotos.map(displayedPhoto => displayedPhoto.id).includes(photo.id)))}
         favourites={favourites}
-        toggleFavourite = {toggleFavourite}
-        clickPhoto = {clickPhoto}
-      /> 
+        toggleFavourite={toggleFavourite}
+        clickPhoto={clickPhoto}
+      />
     </div>
   );
 };

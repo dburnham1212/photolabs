@@ -14,7 +14,7 @@ export const PhotoDetailsModal = (props) => {
     clickedPhoto,
     clickPhoto,
     favourites,
-    toggleFavourite
+    toggleFavourite,
   } = props;
 
   // Checking if the clicked photo is a favourite to update PhotoFavButton
