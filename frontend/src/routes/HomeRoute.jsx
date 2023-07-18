@@ -21,6 +21,7 @@ const HomeRoute = (props) => {
     updatePhotosByTopic,
     viewLikedPhotos,
     setFavMode,
+    setDisplayedToDefault
   } = props;
 
   return (
@@ -33,6 +34,7 @@ const HomeRoute = (props) => {
         updatePhotosByTopic={updatePhotosByTopic}
         viewLikedPhotos={viewLikedPhotos}
         setFavMode={setFavMode}
+        setDisplayedToDefault={setDisplayedToDefault}
       />
       {/* Setting up photo list */}
       <PhotoList

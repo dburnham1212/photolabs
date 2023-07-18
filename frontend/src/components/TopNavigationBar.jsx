@@ -12,16 +12,22 @@ const TopNavigation = (props) => {
     numFavourites,
     updatePhotosByTopic,
     viewLikedPhotos,
-    setFavMode
+    setFavMode,
+    setDisplayedToDefault
   } = props;
+
+  const onClickLogo = () => {
+    setFavMode(false);
+    setDisplayedToDefault();
+  }
 
   return (
     <div className="top-nav-bar">
-      <span className="top-nav-bar__logo">PhotoLabs</span>
+      <span onClick={onClickLogo} className="top-nav-bar__logo">PhotoLabs</span>
       {/* Section to display navbar links and favourites badge if something on page is favourited */}
       <div className="top-nav-bar__links">
         <TopicList topics={topics} updatePhotosByTopic={updatePhotosByTopic} setFavMode={setFavMode}/>
-        <FavBadge isFavPhotoExist={numFavourites} viewLikedPhotos={viewLikedPhotos}/>
+        <FavBadge isFavPhotoExist={numFavourites} viewLikedPhotos={viewLikedPhotos} setFavMode={setFavMode}/>
       </div>
     </div>
   );

@@ -57,15 +57,20 @@ const useApplicationData = () => {
 
   // State to check if we are viewing favourites or not
   const [inFavMode, setFavMode] = useState(false);
+
+  // Reset the displayed photos to all photos
+  const setDisplayedToDefault = () => {
+    setDisplayedPhotos(photos);
+  }
   
   // Setup the liked photos and set the favourite mode 
   const viewLikedPhotos = () => {
-    setFavMode(true);
     setDisplayedPhotos(photos.filter((photo) => favPhotos.includes(photo.id))); 
   }
 
   // If the favPhotos array has changed in size, update the favourite photos
   useEffect(() => {
+    console.log(inFavMode);
     if(inFavMode) {
       viewLikedPhotos();
     }
@@ -78,7 +83,8 @@ const useApplicationData = () => {
     clickPhoto,
     updatePhotosByTopic,
     viewLikedPhotos,
-    setFavMode
+    setFavMode,
+    setDisplayedToDefault
   }
 }
 

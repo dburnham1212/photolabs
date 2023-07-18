@@ -17,7 +17,8 @@ const App = () => {
     toggleFavourite,
     updatePhotosByTopic,
     viewLikedPhotos,
-    setFavMode
+    setFavMode,
+    setDisplayedToDefault
   } = useApplicationData();
 
   return (
@@ -33,6 +34,7 @@ const App = () => {
         updatePhotosByTopic={updatePhotosByTopic}
         viewLikedPhotos={viewLikedPhotos}
         setFavMode={setFavMode}
+        setDisplayedToDefault={setDisplayedToDefault}
       />
       {/* Setting up the photo details modal to display when a photo is clicked */}
       {state.clickedPhoto && <PhotoDetailsModal
